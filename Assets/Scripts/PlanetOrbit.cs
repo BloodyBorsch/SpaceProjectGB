@@ -1,9 +1,7 @@
-﻿using Network;
+﻿using UnityEngine;
 
-using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-namespace Mechanics
+namespace MaksK_SpaceGB
 {
     public class PlanetOrbit : NetworkMovableObject
     {
@@ -50,10 +48,12 @@ namespace Mechanics
             transform.position = p;
             _currentRotationAngle += Time.deltaTime * _rotationSpeed;
             _currentRotationAngle = Mathf.Clamp(_currentRotationAngle, 0, 361);
+
             if (_currentRotationAngle >= 360)
             {
                 _currentRotationAngle = 0;
             }
+
             transform.rotation = Quaternion.AngleAxis(_currentRotationAngle, transform.up);
             _currentAng += _circleRadians * _circleInSecond * Time.deltaTime;
 
@@ -72,6 +72,7 @@ namespace Mechanics
             {
                 return;
             }
+
             transform.position = Vector3.SmoothDamp(transform.position,
                 _serverPosition, ref _currentPositionSmoothVelocity, _speed);
             transform.rotation = Quaternion.Euler(_serverEuler);

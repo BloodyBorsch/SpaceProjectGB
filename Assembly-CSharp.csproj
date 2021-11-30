@@ -47,24 +47,25 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.20f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\MainController.cs" />
-    <Compile Include="Assets\Scripts\SpaceshipSettings.cs" />
-    <Compile Include="Assets\Scripts\SettingsContainer.cs" />
-    <Compile Include="Assets\Scripts\ShipController.cs" />
+    <Compile Include="Assets\Scripts\NetworkMovableObject.cs" />
     <Compile Include="Assets\Scripts\PlayerLabel.cs" />
-    <Compile Include="Assets\Scripts\ServiceLocator.cs" />
-    <Compile Include="Assets\Scripts\ServiceBase.cs" />
-    <Compile Include="Assets\Scripts\SolarSystemNetworkManager.cs" />
     <Compile Include="Assets\Scripts\CameraOrbit.cs" />
+    <Compile Include="Assets\Scripts\SettingsContainer.cs" />
     <Compile Include="Assets\Scripts\PlanetOrbit.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
-    <Compile Include="Assets\Scripts\NetworkMovableObject.cs" />
+    <Compile Include="Assets\Scripts\ShipController.cs" />
+    <Compile Include="Assets\Scripts\SolarSystemNetworkManager.cs" />
+    <Compile Include="Assets\Scripts\ServiceLocator.cs" />
+    <Compile Include="Assets\Scripts\ServiceBase.cs" />
+    <Compile Include="Assets\Scripts\ShipData.cs" />
+    <Compile Include="Assets\Scripts\Helpers\ResourceLoadHelper.cs" />
+    <Compile Include="Assets\Scripts\Enums\UnitSwitcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

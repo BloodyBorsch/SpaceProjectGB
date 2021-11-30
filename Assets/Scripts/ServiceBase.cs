@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 
-public abstract class ServiceBase<T> : MonoBehaviour
+
+namespace MaksK_SpaceGB
 {
-    protected virtual void Awake()
+    public abstract class ServiceBase<T> : MonoBehaviour
     {
-        Bind();
-    }
+        protected virtual void Awake()
+        {
+            Bind();
+        }
 
-    protected virtual void OnDestroy()
-    {
-        Unbind();
-    }
+        protected virtual void OnDestroy()
+        {
+            Unbind();
+        }
 
-    protected virtual void Bind()
-    {
-        
-    }
+        protected virtual void Bind()
+        {
 
-    protected virtual void Unbind()
-    {
+        }
+
+        protected virtual void Unbind()
+        {
+        }
     }
 }

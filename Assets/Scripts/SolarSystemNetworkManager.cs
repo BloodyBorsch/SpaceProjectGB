@@ -1,8 +1,8 @@
-﻿using Characters;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Main
+
+namespace MaksK_SpaceGB
 {
     public class SolarSystemNetworkManager : NetworkManager
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using UI;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Mechanics
+
+namespace MaksK_SpaceGB
 {
     public class CameraOrbit : MonoBehaviour
     {

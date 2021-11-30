@@ -1,16 +1,8 @@
-﻿using System;
-using Main;
-
-using Mechanics;
-
-using Network;
-
-using UI;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Characters
+
+namespace MaksK_SpaceGB
 {
     public class ShipController : NetworkMovableObject
     {

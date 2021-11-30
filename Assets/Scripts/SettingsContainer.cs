@@ -1,12 +1,7 @@
-﻿using Data;
-using UnityEngine;
-
-namespace Main
+﻿namespace MaksK_SpaceGB
 {
     public class SettingsContainer : Singleton<SettingsContainer>
     {
-        public SpaceShipSettings SpaceShipSettings => _spaceShipSettings;
-
-        [SerializeField] private SpaceShipSettings _spaceShipSettings;
+        public ShipData SpaceShipSettings;
     }
 }

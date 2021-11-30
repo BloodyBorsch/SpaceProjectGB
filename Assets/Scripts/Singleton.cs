@@ -1,10 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Main
+
+namespace MaksK_SpaceGB
 {
-    public class Singleton<T> : MonoBehaviour    where T: Object
+    public class Singleton<T> : MonoBehaviour where T : Object
     {
         public static T Instance;
 

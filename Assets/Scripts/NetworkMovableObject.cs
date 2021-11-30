@@ -1,9 +1,9 @@
 ﻿using System;
-
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Network
+
+namespace MaksK_SpaceGB
 {
 #pragma warning disable 618
     public abstract class NetworkMovableObject : NetworkBehaviour

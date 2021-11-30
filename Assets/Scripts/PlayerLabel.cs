@@ -2,7 +2,8 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace UI
+
+namespace MaksK_SpaceGB
 {
     public class PlayerLabel : MonoBehaviour
     {
