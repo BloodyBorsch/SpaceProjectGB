@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1652c3cce01fdb743ad1a577c130e8c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d45e2117c67475489240e9730f4d339, type: 3}
   m_Name: AverageShipData
   m_EditorClassIdentifier: 
-  _acceleration: 0.0866
-  _shipSpeed: 826
-  _faster: 3
+  _acceleration: 0
+  _shipSpeed: 0
+  _faster: 0
   _normalFov: 60
   _fasterFov: 30
   _changeFovSpeed: 0.5
