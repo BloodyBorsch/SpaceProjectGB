@@ -5,7 +5,7 @@ namespace MaksK_SpaceGB
 {
     public class ServiceLocator : Singleton<ServiceLocator>
     {
-        public CameraOrbit CameraOrbit { get; private set; }
+        public CameraOrbit CameraOrbit;
 
         protected override void Awake()
         {

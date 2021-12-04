@@ -18,9 +18,14 @@ namespace MaksK_SpaceGB
         private CameraOrbit _cameraOrbit;
         private PlayerLabel _playerLabel;
         private float _shipSpeed;
-        private Rigidbody _rb;
+        private Rigidbody _rigidBody;
 
         [SyncVar] private string _playerName;
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            CmdDoDamage();
+        }
 
         private void OnGUI()
         {
@@ -31,20 +36,66 @@ namespace MaksK_SpaceGB
             _cameraOrbit.ShowPlayerLabels(_playerLabel);
         }
 
+        [Command]
+        public void CmdChangeName(string playerName)
+        {
+            _playerName = playerName;
+            gameObject.name = playerName;
+            Debug.Log($"Command change on server {playerName}");
+            RpcChangeName(_playerName);
+        }
+
+        [ClientRpc]
+        public void RpcChangeName(string playerName)
+        {
+            gameObject.name = playerName;
+            //_playerName = playerName;
+            Debug.Log($"Command change on client {playerName}");
+        }
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            gameObject.name = _playerName;
+            Debug.Log($"On client start {_playerName}");
+        }
+
         public override void OnStartAuthority()
         {
-            _rb = GetComponent<Rigidbody>();
+            //Подгрузить имя игрока из другого класса
+            //Передать имя на сервер
+            //изменить имя в других клиентах
+            _playerName = "Qwerty";
+            CmdChangeName(_playerName);
 
-            if (_rb == null)
+            //Пробежаться по списку кораблей 
+
+            var objects = ClientScene.objects;
+
+            //for (int i = 0; i < objects.Count; i++)
+            //{
+            //    var obj = objects.ElementAt(i).Value;                
+
+            //    var ship = obj.GetComponent<ShipController>();
+
+            //    if (ship != null && obj.transform != transform)
+            //    {
+            //        obj.gameObject.name = ship.PlayerName;
+            //        Debug.Log(ship.PlayerName);
+            //    }
+            //}
+
+            _rigidBody = GetComponent<Rigidbody>();
+
+            if (_rigidBody == null)
             {
                 return;
             }
 
-            gameObject.name = _playerName;
-            _cameraOrbit = ServiceLocator.Instance.CameraOrbit;
+            //gameObject.name = _playerName;
+            _cameraOrbit = Camera.main.GetComponent<CameraOrbit>();
             _cameraOrbit.Initiate(_cameraAttach == null ? transform : _cameraAttach);
             _playerLabel = GetComponentInChildren<PlayerLabel>();
-            _playerLabel.OnCollision += DoDamage;
 
             base.OnStartAuthority();
         }
@@ -58,16 +109,12 @@ namespace MaksK_SpaceGB
         private void LateUpdate()
         {
             _cameraOrbit?.CameraMovement();
-        }
+        }        
 
-        private void OnDestroy()
+        [Command]
+        private void CmdDoDamage()
         {
-            _playerLabel.OnCollision -= DoDamage;
-        }
-
-        private void DoDamage(PlayerLabel player)
-        {
-            Destroy(player);
+            SolarSystemNetworkManager.DestroyObject(gameObject);
         }
 
         protected override void HasAuthorityMovement()
@@ -92,18 +139,18 @@ namespace MaksK_SpaceGB
             _cameraOrbit.SetFov(currentFov, SettingsContainer.Instance.SpaceShipSettings.ChangeFovSpeed);
 
             var velocity = _cameraOrbit.transform.TransformDirection(Vector3.forward) * _shipSpeed;
-            _rb.velocity = velocity * Time.deltaTime;
+            _rigidBody.velocity = velocity * Time.deltaTime;
 
-            if (!Input.GetKey(KeyCode.C))
-            {
-                var targetRotation = Quaternion.LookRotation(
-                    Quaternion.AngleAxis(_cameraOrbit.LookAngle, -transform.right) *
-                    velocity);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
-            }
+            //if (!Input.GetKey(KeyCode.C))
+            //{
+            //    var targetRotation = Quaternion.LookRotation(
+            //        Quaternion.AngleAxis(_cameraOrbit.LookAngle, -transform.right) *
+            //        velocity);
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
+            //}
         }
 
         protected override void FromServerUpdate() { }
-        protected override void SendToServer() { }        
+        protected override void SendToServer() { }
     }
 }

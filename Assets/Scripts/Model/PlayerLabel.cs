@@ -7,15 +7,7 @@ using UnityEngine.Networking;
 namespace MaksK_SpaceGB
 {
     public class PlayerLabel : MonoBehaviour
-    {
-        public event Action<PlayerLabel> OnCollision;
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            var enemy = collision.gameObject.GetComponentInChildren<PlayerLabel>();
-            OnCollision?.Invoke(enemy);
-        }
-
+    {       
         public void DrawLabel(Camera camera)
         {
             if (camera == null)

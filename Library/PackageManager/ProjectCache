@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637738736854414363
-    m_Hash: 4283373939
+      ticks: 637742444415323112
+    m_Hash: 388586471
   m_LockFileStatus:
     m_FilePath: C:/Projects/SpaceProjectGB/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637738736854504389
-    m_Hash: 2734714479
+      ticks: 637742444415453032
+    m_Hash: 2870375179
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -406,12 +406,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/com.unity.ide.vscode.git
         revision: 1f4f605d5c988cb610c372b5c5216c46cc8f5d30
         path: 
-    - packageId: com.unity.multiplayer-hlapi@1.1.1
+    - packageId: com.unity.multiplayer-hlapi@1.0.8
       testable: 0
       isDirectDependency: 1
-      version: 1.1.1
+      version: 1.0.8
       source: 1
-      resolvedPath: C:\Projects\SpaceProjectGB\Library\PackageCache\com.unity.multiplayer-hlapi@1.1.1
+      resolvedPath: C:\Projects\SpaceProjectGB\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.8
       assetPath: Packages/com.unity.multiplayer-hlapi
       name: com.unity.multiplayer-hlapi
       displayName: Multiplayer HLAPI
@@ -447,11 +447,11 @@ m_PackageAssets:
         - 1.1.1
         verified: 
       dependencies:
-      - name: com.unity.nuget.mono-cecil
-        version: 1.10.1
+      - name: nuget.mono-cecil
+        version: 0.1.6-preview
       resolvedDependencies:
-      - name: com.unity.nuget.mono-cecil
-        version: 1.10.1
+      - name: nuget.mono-cecil
+        version: 0.1.6-preview
       keywords:
       - multiplayer
       - networking
@@ -470,13 +470,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637560226460000000
+      datePublishedTicks: 637436636210000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.multiplayer-hlapi.git
-        revision: bab548572ce9bd49e42fa76ed4edd1972be375c9
+        revision: 0358096b3626d60d1345cfa6df97fcb2dc89152e
         path: 
     - packageId: com.unity.test-framework@1.1.30
       testable: 0
@@ -2758,51 +2758,36 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
         path: 
-    - packageId: com.unity.nuget.mono-cecil@1.10.1
+    - packageId: nuget.mono-cecil@0.1.6-preview
       testable: 0
       isDirectDependency: 0
-      version: 1.10.1
+      version: 0.1.6-preview
       source: 1
-      resolvedPath: C:\Projects\SpaceProjectGB\Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1
-      assetPath: Packages/com.unity.nuget.mono-cecil
-      name: com.unity.nuget.mono-cecil
+      resolvedPath: C:\Projects\SpaceProjectGB\Library\PackageCache\nuget.mono-cecil@0.1.6-preview
+      assetPath: Packages/nuget.mono-cecil
+      name: nuget.mono-cecil
       displayName: Mono Cecil
       author:
         name: 
         email: 
         url: 
-      category: 
+      category: Libraries
       type: 
-      description: 'The mono cecil library from https://www.nuget.org/packages/Mono.Cecil/
-
-
-        This
-        package is intended for internal Unity use only. Most Unity users will be
-        better suite using the existing community tooling.
-
-        To avoid assembly
-        clashes, please use this package if you intend to use Mono.Cecil.'
+      description: The mono cecil library from https://www.nuget.org/packages/Mono.Cecil/
       status: 4
       errors: []
       versions:
         all:
-        - 0.1.6-preview.2
-        - 1.0.0-preview.1
-        - 1.10.0-preview.1
-        - 1.10.1-preview.1
-        - 1.10.1
-        - 1.10.2
+        - 0.1.5-preview
+        - 0.1.6-preview
         compatible:
-        - 0.1.6-preview.2
-        - 1.0.0-preview.1
-        - 1.10.0-preview.1
-        - 1.10.1-preview.1
-        - 1.10.1
-        - 1.10.2
+        - 0.1.5-preview
+        - 0.1.6-preview
         verified: 
       dependencies: []
       resolvedDependencies: []
-      keywords: []
+      keywords:
+      - mono cecil
       registry:
         id: main
         name: 
@@ -2815,13 +2800,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637437477070000000
+      datePublishedTicks: 636898921610000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.mono-cecil.git
-        revision: c1b254abc76d079830441168142797a454b48735
+        url: git@gitlab.cds.internal.unity3d.com/upm-packages/core/nuget.mono-cecil.git
+        revision: d9e57e10c26ba36a62a828729ad08eb73d0386b6
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
