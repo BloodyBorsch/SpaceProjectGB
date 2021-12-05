@@ -7,12 +7,12 @@ namespace MaksK_SpaceGB
     {
         private static string _pathToAverageSpaceShip = "Data/AverageShipData";
 
-        public static string Loader(UnitSwitcher unit)
+        public static ShipData Loader(UnitSwitcher unit)
         {
             switch (unit)
             {
                 case UnitSwitcher.AverageSpaceShip:
-                    return _pathToAverageSpaceShip;
+                    return (ShipData)Resources.Load(_pathToAverageSpaceShip);
                 default:
                     Debug.Log("Ошибка в Загрузчике ресурсов");
                     return null;

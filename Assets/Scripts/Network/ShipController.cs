@@ -6,6 +6,8 @@ namespace MaksK_SpaceGB
 {
     public class ShipController : NetworkMovableObject
     {
+        public ShipData ShipSettings;
+
         public string PlayerName
         {
             get => _playerName;
@@ -20,38 +22,7 @@ namespace MaksK_SpaceGB
         private float _shipSpeed;
         private Rigidbody _rigidBody;
 
-        [SyncVar] private string _playerName;
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            CmdDoDamage();
-        }
-
-        private void OnGUI()
-        {
-            if (_cameraOrbit == null)
-            {
-                return;
-            }
-            _cameraOrbit.ShowPlayerLabels(_playerLabel);
-        }
-
-        [Command]
-        public void CmdChangeName(string playerName)
-        {
-            _playerName = playerName;
-            gameObject.name = playerName;
-            Debug.Log($"Command change on server {playerName}");
-            RpcChangeName(_playerName);
-        }
-
-        [ClientRpc]
-        public void RpcChangeName(string playerName)
-        {
-            gameObject.name = playerName;
-            //_playerName = playerName;
-            Debug.Log($"Command change on client {playerName}");
-        }
+        [SyncVar] private string _playerName;    
 
         public override void OnStartClient()
         {
@@ -62,28 +33,9 @@ namespace MaksK_SpaceGB
 
         public override void OnStartAuthority()
         {
-            //Подгрузить имя игрока из другого класса
-            //Передать имя на сервер
-            //изменить имя в других клиентах
-            _playerName = "Qwerty";
+            ShipSettings = ResourceLoadHelper.Loader(UnitSwitcher.AverageSpaceShip);
+            _playerName = ShipSettings.ShipName;
             CmdChangeName(_playerName);
-
-            //Пробежаться по списку кораблей 
-
-            var objects = ClientScene.objects;
-
-            //for (int i = 0; i < objects.Count; i++)
-            //{
-            //    var obj = objects.ElementAt(i).Value;                
-
-            //    var ship = obj.GetComponent<ShipController>();
-
-            //    if (ship != null && obj.transform != transform)
-            //    {
-            //        obj.gameObject.name = ship.PlayerName;
-            //        Debug.Log(ship.PlayerName);
-            //    }
-            //}
 
             _rigidBody = GetComponent<Rigidbody>();
 
@@ -92,7 +44,6 @@ namespace MaksK_SpaceGB
                 return;
             }
 
-            //gameObject.name = _playerName;
             _cameraOrbit = Camera.main.GetComponent<CameraOrbit>();
             _cameraOrbit.Initiate(_cameraAttach == null ? transform : _cameraAttach);
             _playerLabel = GetComponentInChildren<PlayerLabel>();
@@ -109,12 +60,34 @@ namespace MaksK_SpaceGB
         private void LateUpdate()
         {
             _cameraOrbit?.CameraMovement();
-        }        
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            CmdDoDamage();
+        }
+
+        [Command]
+        public void CmdChangeName(string playerName)
+        {
+            _playerName = playerName;
+            gameObject.name = playerName;
+            Debug.Log($"Command change on server {playerName}");
+            RpcChangeName(_playerName);
+        }
+
+        [ClientRpc]
+        public void RpcChangeName(string playerName)
+        {
+            gameObject.name = playerName;
+            Debug.Log($"Command change on client {playerName}");
+        }
 
         [Command]
         private void CmdDoDamage()
         {
             SolarSystemNetworkManager.DestroyObject(gameObject);
+            Debug.Log($"Destroyed {gameObject}");
         }
 
         protected override void HasAuthorityMovement()
@@ -152,5 +125,14 @@ namespace MaksK_SpaceGB
 
         protected override void FromServerUpdate() { }
         protected override void SendToServer() { }
+
+        private void OnGUI()
+        {
+            if (_cameraOrbit == null)
+            {
+                return;
+            }
+            _cameraOrbit.ShowPlayerLabels(_playerLabel);
+        }
     }
 }

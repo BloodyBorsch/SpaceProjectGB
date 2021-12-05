@@ -357,7 +357,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: a4a47f1f9b7dd8109717ce47cb2cbeeb
+      Hash: bc163bad9771f60e3d68788e48e658a1
     assemblyName: Assembly-CSharp.dll
     namespaceName: MaksK_SpaceGB
     className: ShipController
@@ -459,7 +459,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: f092fde0c9925f06ff2712532d69ed1e
+      Hash: 9419e8edbf16a71f75cb01fbeff8cadf
     assemblyName: Assembly-CSharp.dll
     namespaceName: MaksK_SpaceGB
     className: ShipData

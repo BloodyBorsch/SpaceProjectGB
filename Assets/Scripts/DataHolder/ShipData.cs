@@ -7,6 +7,8 @@ namespace MaksK_SpaceGB
     [CreateAssetMenu(fileName = nameof(ShipData), menuName = "Data/" + nameof(ShipData))]
     public class ShipData : ScriptableObject
     {
+        public string ShipName;
+
         public float Acceleration => _acceleration;
         public float ShipSpeed => _shipSpeed;
         public float Faster => _faster;
